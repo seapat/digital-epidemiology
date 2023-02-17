@@ -1,0 +1,20 @@
+\section{Materials and Methods}
+\label{sec:Methods}
+
+\subsection{SAveRUNNER}
+
+For the project, the most recent code (as of 08.12.21) found on the SAveRUNNER Github repository
+%\footnote{\url{https://github.com/sportingCode/SAveRUNNER}} 
+was used on the diseases "COVID-19" and "Severe Acute Respiratory Syndrome" \cite{Fiscon2021}.
+The similarity metric was used for the edge-weights ("interaction"). The p-value threshold was set to 0.05 and the options \verb|adjust_link| and \verb|new_link| were set to \verb|T| and \verb|F| respectively.
+Furthermore, a Subnetwork was computed for COVID-19 as well.
+Any other variable of the program remained at their default values as well. 
+The tool also produces some interesting figures automatically. Included here are figures \ref{fig:DieseaseDiesease} and \ref{fig:DrugDiesease}.
+\subsection{Deriving original medical indications}
+
+For deriving the original medical indication of the drugs proposed by SAveRUNNER, the therapeutic target database was used. The corresponding data and code were provided by Dr. Giulia Fiscon as well. All diseases that occurred more than once were visualized in a horizontal bar plot using python (version 3.7.12) and the package \verb|pandas| (version 1.1.5).
+
+\subsection{Network Plot}
+
+The Visualization of the computed network was created using Cytoscape 3.9.0 \cite{Shannon2003}. The "Edge-weighted Spring Embedded Layout" was used with the adjusted-similarity values. All Drug Labels were hidden. Edges were colored via continuous color-scale based on the adjusted similarities as well.
+

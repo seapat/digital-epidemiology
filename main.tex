@@ -1,0 +1,134 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,a4paper]{article}
+%\DeclareUnicodeCharacter{0301}{*************************************}
+
+% Adjusting margins to personal my need
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1in}
+
+% Graphics
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{float}
+
+% Math
+\usepackage{amssymb}
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{numprint}
+
+% Other
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+%Bibliography
+\usepackage[citestyle=numeric-comp,bibstyle=numeric-comp,autopunct=true,sorting=none,bibencoding=utf8]{biblatex}
+\bibliography{bibliography/sources}
+
+%indent the first paragraph as well
+%\usepackage{indentfirst}
+\setlength{\parindent}{0em}
+
+% code highlighting
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+{}
+
+% caption
+\usepackage{caption}
+\captionsetup[table]{font={small,stretch=0.5}, skip=5pt, position=above, labelfont=bf}
+\captionsetup[figure]{labelfont=bf}
+\usepackage{booktabs}
+\usepackage{siunitx}  
+\sisetup{
+    table-format = -1.3e-1,
+    table-number-alignment = center,
+    table-auto-round
+  }
+%\usepackage{longtable}
+
+%----------------------------------------------------------------------------------------
+%	MAIN PART
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\title{Appliance of SAveRUNNER to identify repurposable drugs for treatment of COVID-19}% Title
+\author{Sean Klein \\1992143}
+% \date{\today} % Date for the report
+\maketitle % Inserts the title, author and date
+
+%----------------------------------------------------------------------------------------
+%	Abstract
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+\normalsize
+The worldwide outbreak of severe acute respiratory syndrome coronavirus 2 and associated coronavirus disease 2019 requires not only effective vaccines for prevention but also medication for the treatment of already infected. It is important that these drugs are available for widespread usage as soon as possible. Drug repurposing is an approach that accelerates the time and reduces the cost of drug development by the investigation of drugs approved by the Food and Drug Administration (FDA) for other diseases already. We use SAveRUNNER to perform network analysis to find drugs that have the potential to be repurposed.
+
+\end{abstract}
+\thispagestyle{empty}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	Table of Content
+%----------------------------------------------------------------------------------------
+\setcounter{tocdepth}{2}
+%\tableofcontents
+%\clearpage
+
+%----------------------------------------------------------------------------------------
+%	Main Part
+%----------------------------------------------------------------------------------------
+\input{sections/01-introduction}
+\clearpage
+
+\input{sections/02-materials}
+\clearpage
+
+\input{sections/03-results}
+%\clearpage
+
+\section{Conclusions}
+
+We could show that many potential candidates can act as repurposable drugs for the treatment of COIVD-19. Furthermore, it seems that the application of such a drug to also treat another known human coronavirus, Severe acute respiratory syndrome, seems non-trivial. This has interesting implications for the treatment of other coronavirus variants that may emerge in the future.
+The candidate drugs discussed here represent only a fraction and analysis was solely based on pre-existing literature. It is important that all viable candidates are evaluated to undergo reduced clinical testing afterward. This process allows faster and more cost-effective development of new treatment strategies which is crucial to stay ahead of emerging and rapidly evolving diseases.
+
+%----------------------------------------------------------------------------------------
+%	Bibliography
+%----------------------------------------------------------------------------------------
+\clearpage
+
+\printbibliography
+
+%----------------------------------------------------------------------------------------
+%	Appendix
+%----------------------------------------------------------------------------------------
+\clearpage
+\input{sections/04-appendix}
+
+
+
+\end{document}

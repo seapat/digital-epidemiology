@@ -1,0 +1,56 @@
+\section{Appendix}
+\label{sec:appendix}
+
+\subsection{Python scripts}
+
+\subsubsection{Bar plot of onLabel diseases}
+
+\begin{lstlisting}[language=python]
+import pandas as pd
+
+onLabel = pd.read_csv("./onLabel_COVID19_drug.txt", sep="\t")
+tdd = onLabel["TTD_association"]
+tdd.value_counts()
+tdd = tdd.value_counts()
+tdd_top = tdd[tdd > 1] # only include diseases with more than 1 occurrence
+ax =  tdd_top.plot(kind="barh", ylabel="diseases occuring more than once")
+fig = ax.get_figure()
+fig.savefig('./onLabel_diseases_saverunner_covid.png')
+\end{lstlisting}
+
+\subsubsection{Finding common drugs between SARS and COVID-19}
+
+\begin{lstlisting}[language=python]
+import pandas as pd
+
+df = pd.read_csv("./Drug_Disease_network_pval0.05.txt", sep="\t")
+covid = df[df["disease"] == "COVID-19"]
+sars = df[df["disease"] == "Severe Acute Respiratory Syndrome"]
+common_drugs = pd.merge(
+    covid[["drug", "adjusted_similarity"]],
+    sars[["drug", "adjusted_similarity"]],
+    how="inner",
+    on="drug",
+    suffixes=["_covid", "_sars"],
+)
+common_drugs.head()
+common_drugs.sort_values(
+    ["adjusted_similarity_covid", "adjusted_similarity_sars"], ascending=[False, False]
+)
+common_drugs["adj_sim_sum"] = (
+    common_drugs["adjusted_similarity_covid"] + common_drugs["adjusted_similarity_sars"]
+)
+common_drugs.sort_values("adj_sim_sum", ascending=False)
+common_drugs.to_csv("./common_drugs_sars_covid.csv")
+\end{lstlisting}
+
+\subsubsection{Sorting predicted drugs}
+
+\begin{lstlisting}[language=python]
+import pandas as pd
+
+pd.options.display.float_format = "{:.5e}".format
+df = pd.read_csv("./Drug_Disease_network.txt", sep="\t")
+df = df.sort_values(["pval", "adjusted_similarity"], ascending=[True, False])
+df.to_csv("./COVID19_drugs_sorted_pval_adjsim.csv", float_format='%.3e')
+\end{lstlisting}
